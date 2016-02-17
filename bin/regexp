@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+ARGF.each do |line|
+  rec = JSON.parse(line)
+
+  # Do we want to update our existing record, or create a new one?
+  key = rec["output"].nil? ? rec["fieldname"] : rec["output"]
+
+  rec[key] = rec[rec["fieldname"]].gsub(rec["match"], rec["replace"])
+
+  puts rec.to_json
+end

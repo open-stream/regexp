@@ -1,0 +1,26 @@
+description: A simple regexp transformer
+
+input:
+  fieldname:
+    description: The field name to operate on
+    datatype: text
+    required: true
+  match:
+    description: A regexp match, which will likely contain captures
+    datatype: text
+    required: true
+  replace:
+    description: A replace string, which can include capture groups from `match`
+    datatype: text
+    required: true
+  output:
+    description: An optional output field name, if you don't want to overwrite the original
+    datatype: text
+    required: false
+
+# This does nothing yet. We assume the runtime environment has everything
+dependencies:
+  language: ruby
+
+# The command we actually execute
+cmd: ./bin/regexp
